@@ -6,27 +6,49 @@ async function main() {
     await prisma.customer.deleteMany();
   
     console.log('Seeding...');
-  
-    const customer = await prisma.customer.create({
+  // Can use createMany
+    const customer1 = await prisma.customer.create({
       data: {
-  nameAr:       'String',
-  nameEng:      'String',
-  idNumber:     'String',
-  taxNumber:    'String',
-  country:      'String',
-  city:         'String',
-  crNumber:     'String',
-  location:     'String',
-  address:      'String',
-  buildingNum:  'String',
-  phone:        'String',
-  email:        'String',
-  notes:        'String'   
+        nameAr: "دالي",
+        nameEng: "Dali",
+        idNumber: "456",
+        taxNumber: "9999",
+        country: "Tunisia",
+        city: "Chebba",
+        crNumber: "111",
+        location: "Ariana",
+        address: "Rue fathi zhir",
+        buildingNum: "5",
+        phone: "47039611",
+        email: "dali@gmail.com",
+        notes: "this is a note",
+        type: "INDIVIDUAL"
       },
     });
-  
-    console.log({ customer });
+    
+    const customer2 = await prisma.customer.create({
+      data: {
+        compNameEng: "خالد",
+        compNameAr: "khaled",
+        gmNameEng: "Ali",
+        gmNameAr: "علي",
+        gmIdNumber: "11829799",
+        companyActiv: "Commerce",
+        natAddress: "Rue mahmoud ",
+        crNumber: "156",
+        buildingNum: "5",
+        phone: "27921440",
+        email: "khaled@gmail.com",
+        taxNumber: "9999",
+        notes: "this is a note",
+        type: "COMPANY"
+      },
+    });
   }
+  
+
+
+
   
   main()
     .catch((e) => console.error(e))

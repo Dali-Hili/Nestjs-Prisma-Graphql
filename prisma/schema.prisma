@@ -13,42 +13,71 @@ datasource db {
 model Customer {
   id              String        @id @default(uuid())
   //Individual
-  nameAr          String
-  nameEng         String
-  idNumber        String
-  taxNumber       String
-  country         String
-  city            String
-  crNumber        String
-  location        String
-  address         String
-  buildingNum     String
-  phone           String
-  email           String
-  notes           String
+  nameAr          String?        
+  nameEng         String?
+  idNumber        String?
+  taxNumber       String?
+  country         String?
+  city            String?
+  crNumber        String?
+  location        String?
+  address         String?
+  buildingNum     String?
+  phone           String?
+  email           String?
+  notes           String?
 
   //Company
-  compNameEng     String
-  compNameAr      String
-  gmNameEng       String
-  gmNameAr        String
-  gmIdNumber      String
-  companyActiv    String
-  natAddress      String
+  compNameEng     String?
+  compNameAr      String?
+  gmNameEng       String?
+  gmNameAr        String?
+  gmIdNumber      String?
+  companyActiv    String?
+  natAddress      String?
 
   //Goverment
-  govNameEng      String
-  govNameAr       String
-  respPersonEng   String
-  respPersonAr    String
-  respPersonId    String
+  govNameEng      String?
+  govNameAr       String?
+  respPersonEng   String?
+  respPersonAr    String?
+  respPersonId    String?
 
   // International Customer
-  intCusNameEng   String
-  intCusNameAr    String
+  intCusNameEng   String?
+  intCusNameAr    String?
+  //
+  contractId      String?
+  quotationId     String?
 
   createdAt       DateTime      @default(now()) @map("created_at")
   updatedAt       DateTime      @updatedAt @map("updated_at")
-  type            String        @default("INDIVIDUAL")
+  type            String?       
   @@map("customers")
+}
+
+// enum CustomerType {
+//   INDIVIDUAL
+//   COMPANY
+//   GOVERNMENT
+//   INTERNATIONAL_CUSTOMER
+// }
+
+model User {
+  id        String   @id @default(uuid())
+  email     String   @unique
+  password  String
+  firstName String?  @map("first_name")
+  lastName  String?  @map("last_name")
+  sub       String?  @db.VarChar(50)
+  role      Role     @default(ADMIN)
+  createdAt DateTime @default(now()) @map("created_at")
+  updatedAt DateTime @updatedAt @map("updated_at")
+
+  @@map("users")
+}
+
+enum Role {
+  ADMIN
+  USER
 }

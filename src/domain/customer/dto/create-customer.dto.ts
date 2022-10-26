@@ -10,23 +10,23 @@ export class CreateCustomerDto {
   nameEng:         string
   @ApiProperty({required: false})
   idNumber:        string
-  @ApiProperty({required: false})
+  @ApiProperty({required: true})
   taxNumber:       string
-  @ApiProperty({required: false})
+  @ApiProperty({required: true})
   country:         string
-  @ApiProperty({required: false})
+  @ApiProperty({required: true})
   city:            string
   @ApiProperty({required: false})
   crNumber:        string
-  @ApiProperty({required: false})
+  @ApiProperty({required: true})
   location:        string
-  @ApiProperty()
+  @ApiProperty({required: true})
   address:         string
   @ApiProperty({required: false})
   buildingNum:     string
-  @ApiProperty()
+  @ApiProperty({required: true})
   phone:           string
-  @ApiProperty()
+  @ApiProperty({required: true})
   email:           string
   @ApiProperty({required: false})
   notes:           string
@@ -67,5 +67,12 @@ export class CreateCustomerDto {
   intCusNameEng:   string
   @ApiProperty({required: false})
   intCusNameAr:    string
+
+  //
+
+  contractId:      string
+  quotationId:     string
+  @ApiProperty({required: true})
+  type: string
 }
 
